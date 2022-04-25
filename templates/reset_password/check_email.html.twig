@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Email de récupération envoyé" %}
+
+{% block body %}
+
+	<section class="mt-4 container">
+		<div class="row">
+			<div class="col-md-12 mx-auto">
+				<div class="my-5">
+					<h1 class="mb-4 h3 text-center">Lien de réinitialisation envoyé!</h1>
+					<p class="text-center">Un email vous a été envoyé avec un lien pour réinitialiser votre mot de passe.</p>
+					<p class="text-center">Si vous ne recevez pas d'email dans les prochaines minutes, vérifiez vos spam où
+						<a href="{{ path('app_forgot_password_request') }}">essayer à nouveau</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

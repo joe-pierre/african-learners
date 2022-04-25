@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Modifier mon compte utilisateur" %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="col-md-6 mx-auto">
+				<h1 class="mb-3 h2 text-center">Éditer mes informations</h1>
+
+				{{form_start(form)}}
+
+				<div class="row">
+					<div class="col-md-6">
+						{{form_row(form.firstName)}}
+					</div>
+					<div class="col-md-6">
+						{{form_row(form.lastName)}}
+					</div>
+				</div>
+				{{form_row(form.email)}}
+
+				<button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Sauvegarder</button>
+				{{form_end(form)}}
+			</div>
+		</div>
+	</section>
+{% endblock %}

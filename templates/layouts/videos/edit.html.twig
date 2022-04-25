@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title  "Modifier une vidéo" %}
+
+{% block body %}
+	<section class="container">
+		<div class="row mt-5">
+			<div class="col-md-6 mx-auto">
+                <h1 class="mb-5 text-center">Modifier la vidéo</h1>
+
+                {{ include('layouts/videos/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                
+			</div>
+		</div>
+	</section>
+{% endblock %}

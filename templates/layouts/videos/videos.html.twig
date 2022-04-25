@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Ateliers" %}
+
+{% block body %}
+
+	<section class="my-5 container">
+		{% if videos|length > 0 %}
+			<div class="row mb-5">
+				{% for video in videos %}
+					<div class="mb-4 col-lg-4 col-md-6 mb-lg-0">
+						<article class="mb-3 course bg-white rounded shadow">
+							<div class="mx-auto rounded-top overflow-hidden">
+								<a href="{{ path('app_show_video', {id: video.id}) }}">
+                                <iframe width="360" height="215" src="{{ video.videoUrl }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </a>
+							</div>
+							<h2 class="mx-3 mt-3 h5">
+								<a class="text-secondary text-muted text-decoration-none" href="{{ path('app_show_video', {id: video.id}) }}">{{ video.title }}</a>
+							</h2>
+							<p class="pb-4 mx-3 text-muted">
+								<small>{{video.description}}</small>
+							</p>
+						</article>
+					</div>
+				{% endfor %}
+			</div>
+
+			{# <div class="d-flex justify-content-center">
+				{% do videos.setPageRange(3) %}
+				{{ knp_pagination_render(videos, 'layouts/partials/_pagination.html.twig') }}
+			</div> #}
+
+		{% else %}
+			{% include "layouts/videos/_partials/no_video_yet.html.twig" %}
+		{% endif %}
+
+        {% if videos|length > 6 %}
+			<div class="d-flex justify-content-center">
+				<div class="col-md-6">
+					<a href=" {{path('app_videos')}} " class="btn jp-btn-outline btn-lg btn-block">
+						<i class="fas fa-arrow-right"></i>&nbsp;&nbsp;Découvrir tous les cours
+					</a>
+				</div>
+			</div>
+		{% endif %}
+	</section>
+{% endblock %}

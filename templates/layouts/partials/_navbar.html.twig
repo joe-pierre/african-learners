@@ -1,0 +1,76 @@
+<div class="header bg-light py-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-6"></div>
+			<div class="col-6 text-right"></div>
+		</div>
+	</div>
+</div>
+
+<nav class="navbar navbar-expand-sm sticky-top navbar-light bg-light pb-2">
+	<div class="container">
+		<h1 class="navbar-brand">
+			<a class="text-decoration-none text-reset" href=" {{path('app_home')}} ">{{website_short_name}}</a>
+		</h1>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExample07XL">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="{{path('app_home')}}">Accueil</a>
+				</li>
+
+				{% if app.user and app.user.roles[0] is same as("ROLE_COMMISSION_MEMBER") %}
+						<li class="nav-item dropdown show">
+							<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publier</a>
+
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" href="{{path('app_create_course')}} ">
+								&nbsp;&nbsp;Un cours
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href=" {{path('app_create_video')}} ">
+								&nbsp;&nbsp;Une vidéo
+								</a>
+							</div>
+						</li>
+				{% endif %}
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('app_courses')}}">Cours</a>
+				</li>
+
+				<li class="nav-item"><a class="nav-link" href=" {{path('app_videos')}} ">Ateliers</a></li>
+
+				{# <li class="nav-item dropdown show">
+					<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compte</a>
+
+					{% if app.user %}
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" href=" {{path('app_account')}} ">
+								<i class="fas fa-user-alt"></i>&nbsp;&nbsp;Mon profil
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href=" {{path('app_logout', {'token' : csrf_token('logout')})}} ">
+								<i class="fas fa-power-off"></i>&nbsp;&nbsp;Déconnexion
+							</a>
+						</div>
+
+					{% else %}
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" href="{{path('app_login')}}">
+								<i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Se Connecter
+							</a>
+							<a class="dropdown-item" href="{{path('app_register')}}">
+								<i class="fas fa-user-alt"></i>&nbsp;&nbsp;Créer un compte
+							</a>
+						</div>
+					{% endif %}
+
+				</li> #}
+			</ul>
+		</div>
+	</div>
+</nav>

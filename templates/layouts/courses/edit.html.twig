@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Modifier un cours | "~website_short_name %}
+
+{% block body %}
+	<section class="container">
+		<div class="row mt-5">
+			<div class="col-md-6 mx-auto">
+				<h1>Modifier ce Cours</h1>
+
+				{{ include('layouts/courses/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}

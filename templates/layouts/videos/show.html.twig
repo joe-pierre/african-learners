@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Video{% endblock %}
+
+{% block body %}
+
+	<section class="container">
+        <h1 class="text-center">Nos vidéos</h1>
+            <div class="row mt-5">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ video.title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ video.description }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{ video.videoUrl }}" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        <div class="mt-5 d-flex justify-content-between">
+            <div>
+                <a class="mt-3 btn btn-outline-primary" href="{{ path('app_edit_video', {'id': video.id}) }}">Modifier</a>
+            </div>
+
+            {# <a href="{{ path('app_edit_video', {'id': video.id}) }}">edit</a>
+        
+            {{ include('layouts/videos/_delete_form.html.twig') }} #}
+
+            <form method="post" action="{{ path('app_delete_video', {'id': video.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette vidéo ? Cette action est irreversible');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ video.id) }}">
+                <button class="m-3 btn btn-outline-danger">&times; Supprimer</button>
+            </form>
+
+        </div>
+    </section>
+
+{% endblock %}

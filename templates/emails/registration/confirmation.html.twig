@@ -1,0 +1,14 @@
+<h1>Bonjour !
+	{# {{user.firstName ~ " " ~ user.lastName}} #}
+</h1>
+
+<p>
+	Veuillez confirmer votre inscription en cliquant sur le lien ci-dessous :
+	<br><br>
+	<a href="{{ signedUrl }}">Activer mon compte</a>. Ce lien expirera dans :
+	{{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+	Cordialement!
+</p>
