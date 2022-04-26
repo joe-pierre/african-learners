@@ -40,4 +40,8 @@ yarn-error.log
 ###< liip/imagine-bundle ###
 
 
+###> package-lock.json file ###
+/package-lock.json
+###< package-lock.json file ###
+
 /_TODO-FOLDER-LIST
