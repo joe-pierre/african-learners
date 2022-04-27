@@ -93,7 +93,6 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "composer dump-autoload -o",
             "composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction"
         ],
         "post-update-cmd": []
