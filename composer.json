@@ -93,11 +93,11 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "composer dump-autoload -o",
+            "npm cache clean --force",
+            "npm install"
         ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ]
+        "post-update-cmd": []
     },
     "conflict": {
         "symfony/symfony": "*"
