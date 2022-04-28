@@ -1,8 +1,4 @@
 {
-    "engines": {
-        "node": "16.14.0",
-        "npm": "8.7.0"
-    },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
         "@symfony/stimulus-bridge": "^2.0.0",
