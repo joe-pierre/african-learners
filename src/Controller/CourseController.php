@@ -76,7 +76,7 @@ class CourseController extends AbstractController
             $em->persist($course);
             $em->flush();
 
-            $this->addFlash('success', 'Le cours a été créé');
+            $this->addFlash('success', 'Le cours a été publié');
 
             return $this->redirectToRoute('app_courses', [], Response::HTTP_SEE_OTHER);
         }
