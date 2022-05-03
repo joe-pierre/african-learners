@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -av ./ joepierre@a-learners.com:/var/www/african-learners/ --exclude-from=.gitignore --exclude=".*"
