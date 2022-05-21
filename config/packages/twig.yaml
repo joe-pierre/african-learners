@@ -6,7 +6,7 @@ twig:
         website_name: 'African Learners' #African Learners Sama school
         website_slogan: 'Be, Learn, Connect'
         website_short_name: 'ALearners' #ALearners Sama school
-        website_contact_help: 'help@alearners.org' #alearners.org Sama school
+        website_contact_help: 'contact@a-learners.com' #alearners.org Sama school
         website_contact_phone: '+221338257002'
 
 when@test:
