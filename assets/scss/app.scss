@@ -1,177 +1,172 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik&display=swap");
-
 @import "shared/variables";
 @import "~bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.css";
-
 html,
 body {
-  font-family: $secondary-font, sans-serif;
+    font-family: $secondary-font, sans-serif;
+}
+
+.nav-item {
+    &.active {
+        opacity: 0.7;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.dropdown-item {
+    opacity: 0.8;
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .alert {
-  padding: 10px;
-  color: #fff;
-  text-align: center;
-  margin: 0;
-  border: none;
-  border-radius: 0;
-
-  &.alert-success {
-    background-color: $c-green;
-  }
-
-  &.alert-error {
-    background-color: $c-red;
-  }
-
-  &.alert-warning {
-    background-color: $c-yellow;
-  }
-
-  &.alert-info {
-    background-color: $c-light-blue;
-  }
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    &.alert-success {
+        background-color: $c-green;
+    }
+    &.alert-error {
+        background-color: $c-red;
+    }
+    &.alert-warning {
+        background-color: $c-yellow;
+    }
+    &.alert-info {
+        background-color: $c-light-blue;
+    }
 }
 
 section {
-
-  &#error-500{
-    height: 100vh;
-    background-image: url("/assets/images/500-internal-server-error.png");
-    background-repeat: no-repeat;
-    background-position: center top;
-  }
-
-  &#general-error{
-    height: 100vh;
-    background-image: url("/assets/images/general-error.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center top;
-  }
-
-  &#error-403{
-    // width: 100%;
-    height: 65vh;
-    background-image: url("/assets/images/error-403.png");
-    background-repeat: no-repeat;
-    // background-size: cover;
-    background-position: center top;
-  }
-
-  &#banner {
-    width: 100%;
-    height: 75vh;
-    background-image: url("/assets/images/banner.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.9;
-    // font-family: 'Sacramento', cursive;
-    
-    h1{
-      color: $c-white;
-      text-shadow: 0 0 10px $c-black;
-      font-size: 5rem;
-      font-weight: bold;
+    &#error-500 {
+        height: 100vh;
+        background-image: url("/assets/images/500-internal-server-error.png");
+        background-repeat: no-repeat;
+        background-position: center top;
     }
-    
-    span {
-      font-size: 3.5rem;
+    &#general-error {
+        height: 100vh;
+        background-image: url("/assets/images/general-error.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
     }
-  }
+    &#error-403 {
+        // width: 100%;
+        height: 65vh;
+        background-image: url("/assets/images/error-403.png");
+        background-repeat: no-repeat;
+        // background-size: cover;
+        background-position: center top;
+    }
+    &#banner {
+        width: 100%;
+        height: 75vh;
+        background-image: url("/assets/images/banner.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.9;
+        // font-family: 'Sacramento', cursive;
+        h1 {
+            color: $c-white;
+            text-shadow: 0 0 10px $c-black;
+            font-size: 5rem;
+            font-weight: bold;
+        }
+        span {
+            font-size: 3.5rem;
+        }
+    }
 }
 
 #course {
-  fieldset:nth-child(1) {
-    .custom-file-label::after {
-      content: "Choisir la photo";
+    fieldset:nth-child(1) {
+        .custom-file-label::after {
+            content: "Choisir la photo";
+        }
     }
-  }
-
-  fieldset:nth-child(2) {
-    .custom-file-label::after {
-      content: "Choisir le pdf du cours";
+    fieldset:nth-child(2) {
+        .custom-file-label::after {
+            content: "Choisir le pdf du cours";
+        }
     }
-  }
 }
 
 .vich-image {
-  .form-check {
-    @extend .mt-3;
-  }
-
-  img {
-    @extend .mb-2, .rounded, .shadow, .img-thumbnail;
-  }
+    .form-check {
+        @extend .mt-3;
+    }
+    img {
+        @extend .mb-2,
+        .rounded,
+        .shadow,
+        .img-thumbnail;
+    }
 }
 
 .course img {
-  transition: transform 0.3s ease-out;
-
-  &:hover {
-    transform: scale(1.075);
-  }
+    transition: transform 0.3s ease-out;
+    &:hover {
+        transform: scale(1.075);
+    }
 }
 
 .jp-btn-outline {
-  border: $c-light-blue solid 1px;
-  color: $c-dusky-blue;
-  background-color: $c-light-grey;
-  transition: all 0.3s ease-out;
-
-  &:hover {
-    background-color: $c-dark-blue;
-    color: $c-white;
-    opacity: 0.8;
-  }
+    border: $c-light-blue solid 1px;
+    color: $c-dusky-blue;
+    background-color: $c-light-grey;
+    transition: all 0.3s ease-out;
+    &:hover {
+        background-color: $c-dark-blue;
+        color: $c-white;
+        opacity: 0.8;
+    }
 }
 
 footer {
-  &.top {
-    box-shadow: 0 -5px 5px -5px $c-grey;
-  }
-
-  .footer-copyright{
-    a.h6{
-      color: $c-chesnut;
-      transition: all 0.3s ease-out;
-      
-      &:hover {
-        color: $c-dark-chesnut;
-        font-weight: bold;
-      }
+    &.top {
+        box-shadow: 0 -5px 5px -5px $c-grey;
     }
-  }
+    .footer-copyright {
+        a.h6 {
+            color: $c-chesnut;
+            transition: all 0.3s ease-out;
+            &:hover {
+                color: $c-dark-chesnut;
+                font-weight: bold;
+            }
+        }
+    }
 }
 
 i.fab {
-  font-size: 2rem;
-  opacity: 0.8;
-  transition: all 0.3s ease-out;
-
-  &:hover {
-    opacity: 1;
-    transform: translateY(-7px);
-  }
-
-  &.fa-twitter {
-    color: $c-twitter;
-  }
-
-  &.fa-facebook {
-    color: $c-facebook;
-  }
-
-  &.fa-instagram {
-    color: $c-instagram;
-  }
-
-  &.fa-linkedin {
-    color: $c-linkedin;
-  }
-
-  &.fa-youtube {
-    color: $c-youtube;
-  }
+    font-size: 2rem;
+    opacity: 0.8;
+    transition: all 0.3s ease-out;
+    &:hover {
+        opacity: 1;
+        transform: translateY(-7px);
+    }
+    &.fa-twitter {
+        color: $c-twitter;
+    }
+    &.fa-facebook {
+        color: $c-facebook;
+    }
+    &.fa-instagram {
+        color: $c-instagram;
+    }
+    &.fa-linkedin {
+        color: $c-linkedin;
+    }
+    &.fa-youtube {
+        color: $c-youtube;
+    }
 }

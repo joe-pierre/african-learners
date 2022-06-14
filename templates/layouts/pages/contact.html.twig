@@ -4,6 +4,14 @@
 
 {% block body %}
 	<section class="my-5 container">
-		<h1 class="text-center">Contact</h1>
+		<h1 class="h2 text-center">Laissez nous un message 📩 </h1>
+
+		<div class="mt-4">
+			{{ form_start(form)}}
+			{{ form_widget(form)}}
+
+			<button class="btn btn-primary btn-lg btn-block" type="submit">Envoyer</button>
+			{{ form_end(form)}}
+		</div>
 	</section>
 {% endblock %}

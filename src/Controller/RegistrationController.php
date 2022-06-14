@@ -9,6 +9,7 @@ use App\Security\LoginFormAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
@@ -34,7 +35,7 @@ class RegistrationController extends AbstractController
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $em,
         UserAuthenticatorInterface $userAuthenticatorInterface,
-        LoginFormAuthenticator $loginFormAuthenticator
+        LoginFormAuthenticator $loginFormAuthenticator,
     ): Response {
 
         if ($this->getUser()) {
@@ -58,12 +59,14 @@ class RegistrationController extends AbstractController
             $em->persist($user);
             $em->flush();
 
+            $alearnersEmail = $this->getParameter('app.alearners_email');
+
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation(
                 'app_verify_email',
                 $user,
                 (new TemplatedEmail())
-                    ->from(new Address('contact@a-learners.com', 'African Learners'))
+                    ->from(new Address("$alearnersEmail", 'African Learners'))
                     ->to($user->getEmail())
                     ->subject('Activez votre compte')
                     ->htmlTemplate('emails/registration/confirmation.html.twig')

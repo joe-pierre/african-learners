@@ -41,4 +41,4 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/publier-un-cours, roles: ROLE_COMMISSION_MEMBER }
-        - { path: ^/videos/publier, roles: ROLE_COMMISSION_MEMBER }
+        - { path: ^/les-videos/publier-une-video, roles: ROLE_COMMISSION_MEMBER }
