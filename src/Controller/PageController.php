@@ -49,18 +49,20 @@ class PageController extends AbstractController
         $alearnersEmail = $this->getParameter('app.alearners_email');
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $email = (new Email())
-            ->from("$alearnersEmail")
-            ->to("")
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
-            //->priority(Email::PRIORITY_HIGH)
-            ->subject('Time for Symfony Mailer!')
-            ->text('Sending emails is fun again!')
-            ->html('<p>See Twig integration for better HTML integration!</p>');
+            $sender = $form->get("email")->getViewData();
+            $message = $form->get("message")->getViewData();
 
-        $mailer->send($email);            
+            $email = (new Email())
+                ->from($alearnersEmail)
+                ->to($alearnersEmail)
+                ->subject('Message de '. $sender . ' envoyé depuis a-learners.com')
+                ->text($message);
+
+            $mailer->send($email);
+            
+            $this->addFlash('info', 'Message envoyé! ✅');
+
+            return $this->redirectToRoute('app_contact');
         }
 
         return $this->renderForm('layouts/pages/contact.html.twig', compact('form'));
