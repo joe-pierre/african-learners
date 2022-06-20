@@ -62,7 +62,7 @@ class CourseController extends AbstractController
         }
 
         if (!$this->getUser()->isVerified()) {
-            $this->addFlash('warning', 'Votre compte n\'est pas activé, veuillez activer votre compte pour acccéder à plus de fonctionnalités');
+            $this->addFlash('warning', 'Votre compte n\'est pas encore activé, veuillez consulter votre boite mail ou contacter l\'administrateur.');
 
             return $this->redirectToRoute('app_home');
         }
