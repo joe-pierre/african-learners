@@ -14,14 +14,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use function Symfony\Component\String\u;
 
 class CourseController extends AbstractController
 {
     private $courseRepository;
+    private $slugger;
 
-    public function __construct(CourseRepository $courseRepository)
+    public function __construct(CourseRepository $courseRepository, SluggerInterface $slugger)
     {
         $this->courseRepository = $courseRepository;
+        $this->slugger = $slugger;
     }
 
     /**
@@ -78,7 +82,13 @@ class CourseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $this->slugger->slug($course->getTitle());
+
+            $slug = u($slug)->lower();
+            
             $course->setUser($this->getUser());
+            $course->setSlug($slug);
+            
             $em->persist($course);
             $em->flush();
 
@@ -113,12 +123,6 @@ class CourseController extends AbstractController
 
             return $this->redirectToRoute('app_home');
         }
-
-        // if (!$this->getUser()->isVerified()) {
-        //     $this->addFlash('warning', 'Votre compte n\'est pas activé, veuillez vérifier votre boîte mail');
-
-        //     return $this->redirectToRoute('app_home');
-        // }
 
         if ($course->getUser() != $this->getUser()) {
             $this->addFlash('warning', 'Vous n\'avez pas le droit d\'effectuer cette action');
