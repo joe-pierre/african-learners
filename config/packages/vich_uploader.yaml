@@ -3,10 +3,10 @@ vich_uploader:
 
     mappings:
         course_image:
-            uri_prefix: /course_images
-            upload_destination: '%kernel.project_dir%/public/course_images'
+            uri_prefix: '%app.image_uploads_path%'
+            upload_destination: '%kernel.project_dir%/public%app.image_uploads_path%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
         course_file:
-            uri_prefix: /course_files
-            upload_destination: '%kernel.project_dir%/public/course_files'
+            uri_prefix: '%app.file_uploads_path%'
+            upload_destination: '%kernel.project_dir%/public%app.file_uploads_path%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

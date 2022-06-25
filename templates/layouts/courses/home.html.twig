@@ -18,12 +18,12 @@
 					<div class="mb-3 col-md-4">
 						<article class="mb-3 course bg-white rounded shadow">
 							<div class="w-100 rounded-top overflow-hidden">
-								<a href="{{ path('app_show_course', {id: course.id}) }}">
+								<a href="{{ path('app_show_course', course.pathParams) }}">
 									<img src="{{ (course.imageName ? vich_uploader_asset(course) : asset('build/images/placeholder.jpg'))|imagine_filter('squared_thumbnail_medium') }}" alt="{{'img: '~ course.title }}" class="w-100 rounded-top">
 								</a>
 							</div>
 							<h2 class="h5 mx-3 mt-3 h5">
-								<a class="text-secondary text-muted text-decoration-none" href="{{ path('app_show_course', {id: course.id}) }}">{{ course.title }}</a>
+								<a class="text-secondary text-muted text-decoration-none" href="{{ path('app_show_course', course.pathParams) }}">{{ course.title }}</a>
 							</h2>
 							<p class="mx-3 pb-3 text-muted">
 								<small>{{course.description}}</small>

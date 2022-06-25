@@ -1,76 +1,55 @@
-<div class="header bg-light py-2">
-	<div class="container">
-		<div class="row">
-			<div class="col-6"></div>
-			<div class="col-6 text-right"></div>
-		</div>
-	</div>
-</div>
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-light navbar-light sticky-top py-lg-0 px-4 px-lg-5" data-wow-delay="0.1s">
+	<a href="{{path('app_home')}}" class="navbar-brand p-0">
+		<h1 class="m-3 h3 text-primary">{{website_short_name}}</h1>
+	</a>
+	<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
+		<div class="navbar-nav ms-auto">
+			<a href="{{path('app_home')}}" class="nav-item nav-link">Accueil</a>
 
-<nav class="navbar navbar-expand-sm sticky-top navbar-light bg-light pb-2">
-	<div class="container">
-		<h1 class="navbar-brand">
-			<a class="text-decoration-none text-reset" href=" {{path('app_home')}} ">{{website_short_name}}</a>
-		</h1>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarsExample07XL">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="{{path('app_home')}}">Accueil</a>
+			{% if app.user and "ROLE_COMMISSION_MEMBER" in app.user.roles %}
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Publier</a>
+					<div class="dropdown-menu rounded-0 rounded-bottom m-0">
+						<a href="{{path('app_create_course')}}" class="dropdown-item">Un cours</a>
+						<a href="{{path('app_create_video')}}" class="dropdown-item">Une vidéo</a>
+					</div>
 				</li>
+			{% endif %}
 
-				{% if app.user and app.user.roles[0] is same as("ROLE_COMMISSION_MEMBER") %}
-						<li class="nav-item dropdown show active">
-							<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publier</a>
+			<a href="{{path('app_courses')}}" class="nav-item nav-link">Cours</a>
+			<a href="{{path('app_videos')}}" class="nav-item nav-link">Ateliers</a>
 
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-								<a class="dropdown-item" href="{{path('app_create_course')}} ">
-								&nbsp;&nbsp;Un cours
-								</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href=" {{path('app_create_video')}} ">
-								&nbsp;&nbsp;Une vidéo
-								</a>
-							</div>
-						</li>
-				{% endif %}
 
-				<li class="nav-item active">
-					<a class="nav-link" href="{{path('app_courses')}}">Cours</a>
+			{% if app.user %}
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Compte</a>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<a class="dropdown-item" href=" {{path('app_account')}} ">
+							<i class="fas fa-user-alt"></i>&nbsp;&nbsp;Mon profil
+						</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href=" {{path('app_logout', {'token' : csrf_token('logout')})}} ">
+							<i class="fas fa-power-off"></i>&nbsp;&nbsp;Déconnexion
+						</a>
+					</div>
+
+					{# comment this block --start #}
+				{% else %}
+					<div class="dropdown-menu rounded-0 rounded-bottom m-0">
+						<a href="{{path('app_login')}}" class="dropdown-item">
+							<i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Se Connecter</a>
+						<a href="{{path('app_register')}}" class="dropdown-item">
+							<i class="fas fa-user-alt"></i>&nbsp;&nbsp;Créer un compte</a>
+					</div>
 				</li>
+				{#  --end #}
+			{% endif %}
 
-				<li class="nav-item active"><a class="nav-link" href=" {{path('app_videos')}} ">Ateliers</a></li>
-
-				<li class="nav-item dropdown show active">
-					<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compte</a>
-
-					{% if app.user %}
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item" href=" {{path('app_account')}} ">
-								<i class="fas fa-user-alt"></i>&nbsp;&nbsp;Mon profil
-							</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href=" {{path('app_logout', {'token' : csrf_token('logout')})}} ">
-								<i class="fas fa-power-off"></i>&nbsp;&nbsp;Déconnexion
-							</a>
-						</div>
-
-					{% else %}
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item" href="{{path('app_login')}}">
-								<i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Se Connecter
-							</a>
-							<a class="dropdown-item" href="{{path('app_register')}}">
-								<i class="fas fa-user-alt"></i>&nbsp;&nbsp;Créer un compte
-							</a>
-						</div>
-					{% endif %}
-
-				</li>
-			</ul>
 		</div>
 	</div>
 </nav>
+<!-- Navbar End -->

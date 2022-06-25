@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     app.alearners_email: 'contact@a-learners.com'
+    app.image_uploads_path: '/course_images'
+    app.file_uploads_path: '/course_files'
 
 services:
     # default configuration for services in *this* file

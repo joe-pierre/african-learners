@@ -34,6 +34,24 @@ class CourseRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findOneByPublishedDateAndSlug(int $year, int $month, int $day, string $slug): ?Course
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('YEAR(c.createdAt) = :year')
+            ->andWhere('MONTH(c.createdAt) = :month')
+            ->andWhere('DAY(c.createdAt) = :day')
+            ->andWhere('c.slug = :slug')
+            ->setParameters([
+                'slug' => $slug,
+                'year' => $year,
+                'month' => $month,
+                'day' => $day,
+            ])
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     // /**
     //  * @return Course[] Returns an array of Course objects
     //  */

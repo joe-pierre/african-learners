@@ -17,23 +17,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CourseController extends AbstractController
 {
+    private $courseRepository;
+
+    public function __construct(CourseRepository $courseRepository)
+    {
+        $this->courseRepository = $courseRepository;
+    }
 
     /**
      * @Route("/", name="app_home", methods={"GET"})
      */
-    public function home(CourseRepository $courseRepository): Response
+    public function home(): Response
     {
         return $this->render('layouts/courses/home.html.twig', [
-            'courses' => $courseRepository->findBy([], ['createdAt' => 'DESC']),
+            'courses' => $this->courseRepository->findBy([], ['createdAt' => 'DESC']),
         ]);
     }
 
     /**
      * @Route("/les-cours", name="app_courses", methods={"GET"})
      */
-    public function all_courses(CourseRepository $courseRepository, PaginatorInterface $paginator, Request $request): Response
+    public function all_courses(PaginatorInterface $paginator, Request $request): Response
     {
-        $data = $courseRepository->findAll();
+        $data = $this->courseRepository->findAll();
 
         $courses = $paginator->paginate(
             $data,
@@ -88,13 +94,13 @@ class CourseController extends AbstractController
     }
 
     /**
-     * @Route("/cours/{id<[0-9]+>}", name="app_show_course", methods={"GET"})
+     * @Route("/cours/{year}/{month}/{day}/{slug}", name="app_show_course", methods={"GET"})
      */
-    public function show(Course $course): Response
+    public function show(int $year, int $month, int $day, string $slug): Response
     {
-        return $this->render('layouts/courses/show.html.twig', [
-            'course' => $course,
-        ]);
+        $course = $this->courseRepository->findOneByPublishedDateAndSlug($year, $month, $day, $slug);
+
+        return $this->render('layouts/courses/show.html.twig', compact('course'));
     }
 
     /**

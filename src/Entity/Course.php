@@ -76,6 +76,11 @@ class Course
      */
     private $courseFile;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+    
 
     public function getId(): ?int
     {
@@ -178,5 +183,27 @@ class Course
     public function getCourseFile(): ?File
     {
         return $this->courseFile;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPathParams(): array
+    {
+        return [
+            'year' => $this->getCreatedAt()->format('Y'),
+            'month' => $this->getCreatedAt()->format('m'),
+            'day' => $this->getCreatedAt()->format('d'),
+            'slug' => $this->getSlug()
+        ];
     }
 }
