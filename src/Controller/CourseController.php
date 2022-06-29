@@ -104,7 +104,7 @@ class CourseController extends AbstractController
     }
 
     /**
-     * @Route("/cours/{year}/{month}/{day}/{slug}", name="app_show_course", methods={"GET"})
+     * @Route("/cours/{year<[0-9]{4}>}/{month<[0-9]{2}>}/{day<[0-9]{2}>}/{slug<[a-z0-9\-]+>}", name="app_show_course", methods={"GET"})
      */
     public function show(int $year, int $month, int $day, string $slug): Response
     {

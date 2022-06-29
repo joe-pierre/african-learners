@@ -2,17 +2,23 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\Timestampable;
 use App\Repository\CourseRepository;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
  * @ORM\Entity(repositoryClass=CourseRepository::class)
  * @ORM\Table(name="courses")
+ * @UniqueEntity(
+ *     fields={"createdAt", "slug"},
+ *     errorPath="slug",
+ *     message="Ce cours existe déjà veuillez le renomer pour question de validité.Merci!"
+ * )
  * @ORM\HasLifecycleCallbacks()
  * @Vich\Uploadable
  */

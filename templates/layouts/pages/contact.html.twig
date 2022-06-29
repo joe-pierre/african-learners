@@ -4,13 +4,18 @@
 
 {% block body %}
 	<section class="my-5 container">
-		<h1 class="h2 text-center">Laissez nous un message 📩 </h1>
+		<h1 class="h2 text-center">Laissez nous un message 📩
+		</h1>
 
 		<div class="mt-4">
 			{{ form_start(form)}}
 			{{ form_widget(form)}}
 
-			<button class="btn btn-primary btn-lg btn-block" type="submit">Envoyer</button>
+			<button class="btn btn-primary btn-lg w-100" type="submit">
+				<i class="far fa-paper-plane"></i>
+				&emsp;Envoyer&emsp;
+				<i class="far fa-paper-plane"></i>
+			</button>
 			{{ form_end(form)}}
 		</div>
 	</section>

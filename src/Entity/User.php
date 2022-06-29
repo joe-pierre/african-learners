@@ -60,6 +60,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    private $plainPassword;
+
     /**
      * @ORM\OneToMany(targetEntity=Course::class, mappedBy="user", orphanRemoval=true)
      */
@@ -174,6 +176,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getPlainPassword(): string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
     /**
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
@@ -191,7 +205,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
     }
 
     /**
@@ -234,11 +248,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s=' . $size;
     }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
@@ -279,5 +288,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->getEmail();
+    }
+
+    public function isVerified(): ?bool
+    {
+        return $this->isVerified;
     }
 }

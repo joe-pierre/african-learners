@@ -9,6 +9,7 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -35,6 +36,7 @@ class CourseCrudController extends AbstractCrudController
     {
         return [
             TextField::new('imageFile', 'Photo de couverture du cours')->setFormType(VichImageType::class),
+            ImageField::new('imageFile')->setBasePath('%app.image_uploads_path%')->onlyOnIndex(),
             TextField::new('courseFile', 'Fichier (PDF) du cours')
                         ->setFormType(VichFileType::class)
                         ->setFormTypeOptions([
@@ -42,9 +44,9 @@ class CourseCrudController extends AbstractCrudController
                                 new NotBlank(['message' => 'Choisir un fichier (PDF) pour ce cours'])
                             ]
                         ]),
-            TextField::new('title', 'Titre'),
+            TextField::new('title', 'Titre')->hideOnIndex(),
             SlugField::new('slug')->setTargetFieldName('title'),
-            TextareaField::new('description'),
+            TextareaField::new('description')->hideOnIndex(),
             AssociationField::new('user', 'Auteur du cours')->autocomplete(),
         ];
     }

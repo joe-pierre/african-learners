@@ -29,10 +29,11 @@ class UserCrudController extends AbstractCrudController
             TextField::new('firstName', 'Prénom(s)'),
             TextField::new('lastName', 'Nom'),
             EmailField::new('email'),
-            TextField::new('password', 'Mot de passe')
+            TextField::new('plainPassword', 'Mot de passe')
                 ->setFormType(PasswordType::class)
                 ->onlyOnForms()
-                ->setRequired($pageName === Crud::PAGE_NEW),
+                ->setRequired(true),
+                // ->setRequired($pageName === Crud::PAGE_NEW),
             ChoiceField::new('roles')
                 ->setChoices(array_combine($roles, $roles))
                 ->allowMultipleChoices()
