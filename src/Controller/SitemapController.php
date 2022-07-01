@@ -18,11 +18,11 @@ class SitemapController extends AbstractController
         $urls = [];
 
         $urls[] = ['loc' => $this->generateUrl('app_home')];
-        $urls[] = ['loc' => $this->generateUrl('app_courses')];
-        $urls[] = ['loc' => $this->generateUrl('app_create_course')];
-        
         $urls[] = ['loc' => $this->generateUrl('app_about')];
         $urls[] = ['loc' => $this->generateUrl('app_contact')];
+        
+        $urls[] = ['loc' => $this->generateUrl('app_courses')];
+        $urls[] = ['loc' => $this->generateUrl('app_create_course')];
 
         $urls[] = ['loc' => $this->generateUrl('app_register')];
         $urls[] = ['loc' => $this->generateUrl('app_login')];
