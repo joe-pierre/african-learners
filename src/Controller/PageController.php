@@ -62,7 +62,7 @@ class PageController extends AbstractController
             
             $this->addFlash('info', 'Message envoyé! ✅');
 
-            return $this->redirectToRoute('app_contact');
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->renderForm('layouts/pages/contact.html.twig', compact('form'));
