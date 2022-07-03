@@ -7,6 +7,7 @@ parameters:
     app.alearners_email: 'contact@a-learners.com'
     app.image_uploads_path: '/course_images'
     app.file_uploads_path: '/course_files'
+    google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 services:
     # default configuration for services in *this* file

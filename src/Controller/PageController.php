@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -42,6 +43,9 @@ class PageController extends AbstractController
                         ]
                     ])
                     ->add('message', TextareaType::class, ['label' => 'Message',])
+                    ->add('recaptcha', EWZRecaptchaType::class, [
+                        'label' => false,
+                    ])
                     ->getForm();
 
         $form->handleRequest($request);
