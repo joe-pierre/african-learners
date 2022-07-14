@@ -16,6 +16,7 @@
         "doctrine/orm": "^2.10",
         "easycorp/easyadmin-bundle": "^4.3",
         "excelwebzone/recaptcha-bundle": "^1.5",
+        "karser/karser-recaptcha3-bundle": "^0.1.22",
         "knplabs/knp-paginator-bundle": "^5.8",
         "liip/imagine-bundle": "^2.7",
         "phpdocumentor/reflection-docblock": "^5.3",
@@ -51,6 +52,7 @@
         "symfonycasts/reset-password-bundle": "^1.12",
         "symfonycasts/verify-email-bundle": "^1.7",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/string-extra": "^3.4",
         "twig/twig": "^2.12|^3.0",
         "vich/uploader-bundle": "^1.18"
     },

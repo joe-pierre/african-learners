@@ -7,11 +7,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PageController extends AbstractController
@@ -43,8 +45,9 @@ class PageController extends AbstractController
                         ]
                     ])
                     ->add('message', TextareaType::class, ['label' => 'Message',])
-                    ->add('recaptcha', EWZRecaptchaType::class, [
-                        'label' => false,
+                    ->add('captcha', Recaptcha3Type::class, [
+                        'constraints' => new Recaptcha3(),
+                        'action_name' => 'app_contact',
                     ])
                     ->getForm();
 

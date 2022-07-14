@@ -25,10 +25,17 @@
 								</a>
 							</div>
 							<h1 class="h5 mx-3 mt-3">
-								<a class="text-secondary text-muted text-decoration-none" href="{{ path('app_show_course', course.pathParams) }}">{{ course.title }}</a>
+								<a class="text-secondary text-muted text-decoration-none" href="{{ path('app_show_course', course.pathParams) }}">{{ course.title|u.truncate(30, '...', false) }}</a>
 							</h1>
 							<p class="mx-3 pb-3 text-muted">
-								<small>{{course.description}}</small>
+								<small>
+									{{course.description|u.truncate(60, '...', true)}}
+									&nbsp;
+
+									<a href="{{ path('app_show_course', course.pathParams) }}">voir plus
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+								</small>
 							</p>
 						</article>
 					</div>
