@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik&family=Kaushan+Script&display=swap");
 @import "shared/variables";
 @import "~bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.css";
@@ -145,6 +145,7 @@ footer {
     .footer-copyright {
         a.h6 {
             color: $c-chesnut;
+            text-decoration-line: none;
             transition: all 0.3s ease-out;
             &:hover {
                 color: $c-dark-chesnut;
@@ -176,5 +177,18 @@ i.fab {
     }
     &.fa-youtube {
         color: $c-youtube;
+    }
+}
+
+.jopi {
+    font-family: $third-font, sans-serif;
+    opacity: 0.5;
+}
+
+.jopi a {
+    text-decoration-line: none;
+    transition: all 0.3s ease-out;
+    &:hover {
+        font-size: 1rem;
     }
 }
