@@ -5,13 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, height=device-height, user-scalable=0">
 		<meta name="author" content="Ecoles Pies de l'Afrique de l'Ouest <gomisjoepierre@gmail.com>">
-		<meta content="Ecoles Pies de l'Afrique de l'Ouest" name="description"/>
-		<meta content="Education pour tous" name="description"/>
-		<meta content="Ecole numérique au Sénégal" name="description"/>
-		<meta content="Innovation éducative en Afrique de l'Ouest" name="description"/>
-		<meta content="Ressources éducatifs" name="description"/>
-		<meta content="Cours de la 6eme à la terminale" name="description"/>
-		<meta content="Le web pédagogique des Ecoles Pies a pour objectif général de contribuer au développement de l'éducation des enfants et des jeunes dans la perspective de la réalisation des objectifs de développement des Nations Unies, la démocratisation de la connaissance, l’Ecole pour tous. &lt;br/&gt; A travers des objectifs spécifiques qui se déclinent ainsi : &lt;br/&gt;créer une école virtuelle à l’échelle ouest-africaine.&lt;br/&gt; Devenir l’outil des acteurs éducatifs, en mettant à la disposition de ces derniers : Les différents curricula, les bonnes pratiques, les guides pédagogiques, les Phares ainsi que les examens concours et leurs corrigés.&lt;br/&gt; Actualité du monde éducatif, être le carrefour d’information dans l’éducation et le numérique&lt;br/&gt; Plaidoyer pour l’innovation pédagogique dans l’éducation.&lt;br/&gt; Basé sur le SMART traditionnel les objectifs spécifiques listés ci-dessus, entrent dans le cadre de la vision, de la Mission et des Valeurs des Ecoles Pies traduites dans le Web Pédagogique en ces trois mots : BE, Learn and Connect." name="description"/>
+		<meta content="Le web pédagogique des Ecoles Pies a pour objectif général de contribuer au développement de l'éducation des enfants et des jeunes dans la perspective de la réalisation des objectifs de développement des Nations Unies, la démocratisation de la connaissance, l’Ecole pour tous. &lt;br/&gt; A travers des objectifs spécifiques qui se déclinent ainsi : &lt;br/&gt;créer une école virtuelle à l’échelle ouest-africaine.&lt;br/&gt; Devenir l’outil des acteurs éducatifs, en mettant à la disposition de ces derniers : Les différents curricula, les bonnes pratiques, les guides pédagogiques, les Phares ainsi que les examens concours et leurs corrigés.&lt;br/&gt; Actualité du monde éducatif, être le carrefour d’information dans l’éducation et le numérique&lt;br/&gt; Plaidoyer pour l’innovation pédagogique dans l’éducation.&lt;br/&gt; Basé sur le SMART traditionnel les objectifs spécifiques listés ci-dessus, entrent dans le cadre de la vision, de la Mission et des Valeurs des Ecoles Pies traduites dans le Web Pédagogique en ces trois mots : Be, Learn and Connect." name="description"/>
 
 
 		<link rel="icon" type="image/png" href="{{asset('build/images/marca-upf-solidaria.png')}}">
@@ -34,19 +28,19 @@
 					{{ message }}
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
-
 			{% endfor %}
 		{% endfor %}
 
 		{% include 'layouts/partials/_navbar.html.twig' %}
 
-		<main role="main"> {% block body %}{% endblock %}
-			</main>
+		<main role="main"> 
+			{% block body %}{% endblock %}
+		</main>
 
-			{% include 'layouts/partials/_footer.html.twig' %}
+		{% include 'layouts/partials/_footer.html.twig' %}
 
-			{% block javascripts %}
-				{{ encore_entry_script_tags('app') }}
-			{% endblock %}
-		</body>
-	</html>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</body>
+</html>
